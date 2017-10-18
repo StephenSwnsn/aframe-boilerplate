@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+<!-- Calling Scripts -->
     <title>Hello, WebVR! - A-Frame</title>
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
@@ -11,32 +12,33 @@
     <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
     <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
     <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
-     <script src="hello-world.js"></script> 
-        <script src="clicker.js"></script>
+     <script src="sphereHandler.js"></script> 
 </head>
   <body>
     <a-scene>
       
     <a-assets>
+    <!-- Preloading the assets -->
     <a-asset-item id="shuttle" src="shuttle.gltf"></a-asset-item>
     <img id="skyTexture"
       src="mars3.jpg" rotation="0 -130 0">
     </a-assets>
+    <!-- Loading the camera -->
      <a-camera>
-        <a-entity cursor="fuse: true;"
+        <a-entity cursor="fuse: true;" 
           position="0 0 -1"
           scale=".1 .1 .1"
           geometry="primitive: ring"
-          material="color: black; shader: flat">
+          material="color: black; shader: flat"> <!-- the fuse variable means that it will wait before registering a click -->
   <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
-               fill="backwards" from=".2 .2 .2" to="0.1 0.1 0.1"></a-animation>
+               fill="backwards" from=".2 .2 .2" to="0.1 0.1 0.1"></a-animation> <!-- This is an animation that will play when the cursor starts "Fusing" -->
 </a-entity>
   </a-camera>
 
       <a-entity id="sphere" geometry="primitive: sphere" material="color: green" change-color-on-hover="color: blue" position="1.8 .5 0" scale=".2 .2 .2" hello-world> 
-</a-entity>
+</a-entity> <!-- creating a sphere and registering sphereHandler to it -->
 
-      <a-entity gltf-model="#shuttle" position="0 -2 30" rotation="20 190 0">
+      <a-entity gltf-model="#shuttle" position="0 -2 30" rotation="20 190 0"> <!-- Adding the shuttle to the scene -->
                <a-animation attribute="rotation"
                dur="10000"
                fill="forwards"
@@ -61,10 +63,11 @@
                fill="forwards"
                to="70 360 0"
                from="5 360 0"
-               ></a-animation>
+               ></a-animation> <!-- A bunch of animations -->
+                <!-- A note: It was important to designate the "from" in the later animations -->
  
       </a-entity>
-      <a-sky src="#skyTexture"></a-sky>
+      <a-sky src="#skyTexture"></a-sky> <!-- Load in the background -->
     </a-scene>
   </body>
 </html>

@@ -1,4 +1,4 @@
-AFRAME.registerComponent('hello-world', {
+AFRAME.registerComponent('sphereHandler', {
   init: function () {
     var el = this.el;
     el.addEventListener('click', function () {
